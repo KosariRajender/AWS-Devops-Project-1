@@ -6,8 +6,8 @@ phases:
       python: 3.8
     commands:
       - echo Installing Terraform...
-      - curl -LO https://releases.hashicorp.com/terraform/1.5.0/terraform_1.5.0_linux_amd64.zip
-      - unzip terraform_1.5.0_linux_amd64.zip
+      - curl -LO https://releases.hashicorp.com/terraform/1.9.4/terraform_1.9.4_linux_amd64.zip
+      - unzip terraform_1.9.4_linux_amd64.zip
       - mv terraform /usr/local/bin/
       - terraform version
 
