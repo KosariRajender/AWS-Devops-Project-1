@@ -20,7 +20,7 @@ phases:
       - echo Building Terraform infrastructure...
       - terraform init
       - terraform plan
-      - terraform destroy -auto-approve
+      - terraform apply -auto-approve
   post_build:
     commands:
       - echo Terraform build complete!
