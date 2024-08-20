@@ -40,3 +40,4 @@ resource "aws_instance" "myec23" {
   tags = {
     Name = "abc"
   }
+}
