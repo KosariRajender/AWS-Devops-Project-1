@@ -8,6 +8,6 @@ data "aws_iam_group" "existing_group" {
 }
 data "aws_key_pair" "ec2key" {
   key_name           = "terraform-key"
-  include_public_key = true
+  
 }
 
