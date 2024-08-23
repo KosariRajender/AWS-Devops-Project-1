@@ -13,7 +13,7 @@ resource "aws_instance" "myec2" {
   connection {
     type        = "ssh"
     user        = "ec2-user"
-    private_key = data.aws_key_pair.ec2key
+    private_key = data.aws_key_pair.ec2key.key_name
     host        = self.public_ip
   }
   # here iam using provisioner to execute commands in the server
