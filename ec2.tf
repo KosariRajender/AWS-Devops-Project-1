@@ -30,14 +30,3 @@ output "ec2_instance_public_ip" {
   description = "The public IP address of the EC2 instance"
   value       = aws_instance.myec2.public_ip
 }
-resource "aws_instance" "myec23" {
-  ami           = "ami-0ae8f15ae66fe8cda"
-  instance_type = "t2.micro"
-  key_name       = "terraform-key"
-
-  vpc_security_group_ids = [aws_security_group.my_sg.id]
-
-  tags = {
-    Name = "abc"
-  }
-}
