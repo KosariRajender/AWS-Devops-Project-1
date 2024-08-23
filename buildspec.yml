@@ -10,17 +10,19 @@ phases:
       - unzip terraform_1.9.4_linux_amd64.zip
       - mv terraform /usr/local/bin/
       - terraform version
+
   pre_build:
     commands:
       - echo Preparing for Terraform operations...
-      # Here you can run additional commands if needed, like installing AWS CLI
       - aws --version
+
   build:
     commands:
       - echo Building Terraform infrastructure...
       - terraform init
       - terraform plan -lock=false
       - terraform apply -auto-approve
+
   post_build:
     commands:
       - echo Terraform build complete!
