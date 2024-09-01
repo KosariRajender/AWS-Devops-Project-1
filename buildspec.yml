@@ -15,43 +15,16 @@ phases:
     commands:
       - echo Preparing for Terraform operations...
       - aws --version
-      - echo Retrieving GitHub token from AWS Secrets Manager...
-      - export GITHUB_TOKEN=$(aws secretsmanager get-secret-value --secret-id github_pat --query SecretString --output text | jq -r .github_token)
 
   build:
     commands:
-      - echo Building Terraform infrastructure...
+      - echo Running Terraform plan...
       - terraform init
-      - terraform plan
-      - terraform apply -auto-approve
+      - terraform plan -out=tfplan
 
   post_build:
     commands:
-      - echo Terraform build complete!
-      - echo Configuring Git...
-      - git config --global user.name 'KosariRajender'
-      - git config --global user.email 'rajender.kosari01@gmail.com'
-      - echo Cloning repository...
-      - git clone https://github.com/KosariRajender/AWS-Devops-Project-1.git
-      - cd AWS-Devops-Project-1
-      - echo Downloading artifacts from S3...
-      - aws s3 cp s3://codepipeline-us-east-1-360389744253/pipeline/SourceArti/gBxbEzw . --recursive
-      - echo Listing files in the current directory...
-      - ls -la
-      - echo Creating target directory...
-      - mkdir -p /path/to/target/directory/
-      - echo Copying artifacts...
-      - cp -r * /path/to/target/directory/
-      - echo Checking for changes...
-      - git add .
-      - |
-        if ! git diff-index --quiet HEAD --; then
-          echo "Changes detected. Committing and pushing changes..."
-          git commit -m 'Add build artifacts'
-          git push https://$GITHUB_TOKEN@github.com/KosariRajender/AWS-Devops-Project-1.git
-        else
-          echo "No changes to commit."
-        fi
+      - echo Terraform plan complete!
 
 artifacts:
   files:
