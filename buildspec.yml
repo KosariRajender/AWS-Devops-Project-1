@@ -25,6 +25,8 @@ phases:
   post_build:
     commands:
       - echo Terraform plan complete!
+      - echo Uploading plan to S3...
+      - aws s3 cp tfplan s3://your-s3-bucket/terraform-plans/$(date +%Y-%m-%d-%H-%M-%S)-tfplan
 
 artifacts:
   files:
