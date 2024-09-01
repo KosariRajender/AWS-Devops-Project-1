@@ -35,7 +35,7 @@ phases:
       - git clone https://github.com/KosariRajender/AWS-Devops-Project-1.git
       - cd AWS-Devops-Project-1
       - echo Downloading artifacts from S3...
-      - aws s3 cp s3://codepipeline-us-east-1-360389744253.pipelines/pipeline/SourceArti/gBxbEzw . --recursive
+      - aws s3 cp s3://codepipeline-us-east-1-360389744253/pipeline/SourceArti/gBxbEzw . --recursive
       - echo Copying artifacts...
       - cp -r * /path/to/target/directory/  # Adjust this path based on where you want to place the artifacts
       - git add .
