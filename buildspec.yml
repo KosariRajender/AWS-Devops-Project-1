@@ -36,8 +36,12 @@ phases:
       - cd AWS-Devops-Project-1
       - echo Downloading artifacts from S3...
       - aws s3 cp s3://codepipeline-us-east-1-360389744253/pipeline/SourceArti/gBxbEzw . --recursive
+      - echo Listing files in the current directory...
+      - ls -la
+      - echo Creating target directory...
+      - mkdir -p /path/to/target/directory/
       - echo Copying artifacts...
-      - cp -r * /path/to/target/directory/  # Adjust this path based on where you want to place the artifacts
+      - cp -r * /path/to/target/directory/
       - git add .
       - git commit -m 'Add build artifacts'
       - git push https://$GITHUB_TOKEN@github.com/KosariRajender/AWS-Devops-Project-1.git
