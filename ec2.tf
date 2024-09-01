@@ -7,7 +7,7 @@ resource "aws_instance" "myec2" {
   vpc_security_group_ids = [aws_security_group.my_sg.id]
 
   tags = {
-    Name = "nginx"
+    Name = "terraform"
   }
 }
 // iam using output to take ip adress to check insted of going to console
