@@ -42,9 +42,16 @@ phases:
       - mkdir -p /path/to/target/directory/
       - echo Copying artifacts...
       - cp -r * /path/to/target/directory/
+      - echo Checking for changes...
       - git add .
-      - git commit -m 'Add build artifacts'
-      - git push https://$GITHUB_TOKEN@github.com/KosariRajender/AWS-Devops-Project-1.git
+      - |
+        if ! git diff-index --quiet HEAD --; then
+          echo "Changes detected. Committing and pushing changes..."
+          git commit -m 'Add build artifacts'
+          git push https://$GITHUB_TOKEN@github.com/KosariRajender/AWS-Devops-Project-1.git
+        else
+          echo "No changes to commit."
+        fi
 
 artifacts:
   files:
